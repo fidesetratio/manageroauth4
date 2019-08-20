@@ -54,6 +54,7 @@ AuthorizationServerConfigurerAdapter{
                         .authorizedGrantTypes("client_credentials")
                         .scopes("trust")
                         .resourceIds(RESOURCE_ID)
+                        .accessTokenValiditySeconds(-1)
                     .and()
                     .withClient("clientapp")
                         .secret("123456")
