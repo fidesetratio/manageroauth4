@@ -24,7 +24,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 	                "patartimotius",
 	                "evievi123",
 	                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
-		 
 		return basicUser1;
 	}
 
