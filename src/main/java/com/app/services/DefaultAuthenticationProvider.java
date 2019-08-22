@@ -28,17 +28,14 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
         if (userEmail.isEmpty() || userPassword.toString().isEmpty()) {
             return null;
         }
-
         String validUserEmail = "patartimotius";
         String validUserPassword = "evievi123";
-
         if (userEmail.equalsIgnoreCase(validUserEmail)
                 && userPassword.equals(validUserPassword)) {
             return new UsernamePasswordAuthenticationToken(
                     userEmail, userPassword, getAuthority());
         }
-
-        throw new UsernameNotFoundException("Invalid username or password dga");
+        throw new UsernameNotFoundException("Invalid username or password");
     }
 
     @Override
@@ -47,7 +44,8 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
     }
 
     private List<SimpleGrantedAuthority> getAuthority() {
-        return Collections.emptyList();
+    	  return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+    	  
     }
     
 }

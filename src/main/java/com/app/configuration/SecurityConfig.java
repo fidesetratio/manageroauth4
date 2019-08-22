@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
+import com.app.services.CustomUserDetailsService;
 import com.app.services.DefaultAuthenticationProvider;
 
 @Configuration
@@ -19,7 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    	  auth.authenticationProvider(new DefaultAuthenticationProvider());
+    	auth.userDetailsService(new CustomUserDetailsService());  
+    	auth.authenticationProvider(new DefaultAuthenticationProvider());
     }	 
 	 @Bean
 	 public static NoOpPasswordEncoder passwordEncoder() {
